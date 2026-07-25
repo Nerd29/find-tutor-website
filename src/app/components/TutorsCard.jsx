@@ -14,7 +14,7 @@ const TutorsCard = ({ tutor }) => {
         {/* 1. Blurred background image to fill wide space gracefully */}
         <Image 
           src={tutor.image} 
-          alt="" 
+          alt={tutor.name} 
           fill
           priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

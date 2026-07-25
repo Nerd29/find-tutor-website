@@ -16,10 +16,10 @@ const Navbar = () => {
 
   }=authClient.useSession()
 
-  console.log(session)
+  // console.log(session)
 
   const user=session?.user
-  console.log(user)
+  // console.log(user)
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

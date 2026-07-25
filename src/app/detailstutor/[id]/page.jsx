@@ -5,7 +5,8 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation'; // 👈 Import useRouter
-import Link from 'next/link';
+// import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const TutorDetailsPage = ({ params }) => {
   const router = useRouter();
@@ -53,6 +54,9 @@ const TutorDetailsPage = ({ params }) => {
     })
     const data= await res.json()
     console.log(data)
+    toast.success(`You successfully booked a session with ${tutor?.name}`)
+
+    
   }
 
 
