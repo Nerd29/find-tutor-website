@@ -25,7 +25,8 @@ const MyBookedSessionsPage = async () => {
                 My Booked Sessions
             </h1>
 
-            <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
+            {Array.isArray(bookings) && bookings.length > 0 ?(
+                    <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
                 <table className="w-full text-left border-collapse">
                     <thead className="bg-gray-50 border-b border-gray-200 text-xs font-semibold uppercase text-gray-500">
                         <tr>
@@ -79,6 +80,19 @@ const MyBookedSessionsPage = async () => {
                     </tbody>
                 </table>
             </div>
+            ):(
+                <div className="text-center py-16 px-4 bg-white rounded-2xl border border-gray-100 shadow-sm max-w-md mx-auto">
+                    <div className="w-16 h-16 bg-cyan-50 text-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        📅
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">No Booked Sessions Yet</h3>
+                    <p className="text-gray-500 text-sm mb-6">
+                        You haven`t reserved any tutor sessions. Browse available tutors to get started.
+                    </p>
+                </div>
+            )}
+
+        
         </div>
     );
 };
