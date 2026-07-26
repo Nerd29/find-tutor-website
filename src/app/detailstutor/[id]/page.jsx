@@ -49,7 +49,7 @@ const TutorDetailsPage = ({ params }) => {
       headers:{
         'content-type':'application/json'
       },
-      body: JSON.stringify(bookingData)
+      body: JSON.stringify(res)
 
     })
     const data= await res.json()
