@@ -8,13 +8,15 @@ import { Mail, Lock, ArrowRight } from 'lucide-react';
 
 import Image from 'next/image';
 import { authClient } from '@/lib/auth-client';
-import { redirect } from 'next/navigation';
+import {  useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { signOut } from 'better-auth/api';
 
 export default function Login() {
 
+    const router= useRouter();
      const onSubmit = async (e) => {
+
         e.preventDefault();
     
         const formData = new FormData(e.currentTarget);
@@ -31,8 +33,8 @@ export default function Login() {
     
         console.log(res,error)
         if (res) {
-        // redirect("/")
-        toast.success("Login Successful")
+            toast.success("Login Successful")
+            router.push("/")  
       } else {
        toast.error("Invalid Email and Password")
       }

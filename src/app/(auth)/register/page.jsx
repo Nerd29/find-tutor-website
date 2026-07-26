@@ -1,59 +1,47 @@
 'use client';
 
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-
 import Link from 'next/link';
-import { User, Mail, Lock, ArrowRight } from 'lucide-react';
+import { User, ArrowRight } from 'lucide-react';
 import { authClient } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Register() {
-
-    const router=useRouter()
+    const router = useRouter();
 
     const onSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const user = Object.fromEntries(formData.entries());
+        const formData = new FormData(e.currentTarget);
+        const user = Object.fromEntries(formData.entries());
 
-    console.log(user)
+        const { data: res, error } = await authClient.signUp.email({
+            email: user.email,
+            password: user.password,
+            name: user.name,
+            image: user.image,
+        });
 
-     const { data:res, error } = await authClient.signUp.email({
-      email: user.email,
-      password: user.password,
-      name: user.name,
-      image: user.image,
-      
+        if (error) {
+            toast.error(error.message || "Registration failed!");
+            return;
+        }
 
-    });
+        if (res) {
+            toast.success("Registration Successful!");
+            router.push("/login");
+        }
+    };
 
-    console.log(res,error)
-
-    if(error){
-        toast.error("Registration failed!")
-        return;
-    }
-    if(res){
-        toast.success("Registration Successful!")
-        router.push("/")
-    }
-    
-
-
-//     if (data) {
-//       redirect("/");
-//     }
-
-//     if (error) {
-//       // toast
-//       alert("Error");
-//     }
-//   };
-
-    // 
-    }
+    // Defined at component scope so the JSX button onClick handler can access it
+    const handleGoogleRegister = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/",
+        });
+    };
 
     return (
         <div className="min-h-[80vh] flex flex-col bg-slate-50 py-12">
@@ -69,9 +57,7 @@ export default function Register() {
                             <p className="text-slate-500 font-medium">Create your account to start learning</p>
                         </div>
 
-                        <Form onSubmit={onSubmit}
-                            className="space-y-6"
-                        >
+                        <Form onSubmit={onSubmit} className="space-y-6">
                             <div className="space-y-2">
                                 <label
                                     htmlFor="name"
@@ -89,21 +75,21 @@ export default function Register() {
                                 />
                             </div>
 
-                           <TextField
-                                                           isRequired
-                                                           name="email"
-                                                           type="email"
-                                                           validate={(value) => {
-                                                           if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                                                               return "Please enter a valid email address";
-                                                           }
-                                                           return null;
-                                                           }}
-                                                       >
-                                                           <Label>Email</Label>
-                                                           <Input placeholder="john@example.com" />
-                                                           <FieldError />
-                                                       </TextField>
+                            <TextField
+                                isRequired
+                                name="email"
+                                type="email"
+                                validate={(value) => {
+                                    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                                        return "Please enter a valid email address";
+                                    }
+                                    return null;
+                                }}
+                            >
+                                <Label>Email</Label>
+                                <Input placeholder="john@example.com" />
+                                <FieldError />
+                            </TextField>
 
                             <div className="space-y-2">
                                 <label
@@ -122,28 +108,29 @@ export default function Register() {
                                 />
                             </div>
 
-                             <TextField
+                            <TextField
                                 isRequired
-                                minLength={8}
+                                minLength={6}
                                 name="password"
                                 type="password"
                                 validate={(value) => {
-                                if (value.length < 8) {
-                                    return "Password must be at least 8 characters";
-                                }
-                                if (!/[A-Z]/.test(value)) {
-                                    return "Password must contain at least one uppercase letter";
-                                }
-                                if (!/[0-9]/.test(value)) {
-                                    return "Password must contain at least one number";
-                                }
-                                return null;
+                                    if (value.length < 6) {
+                                        return "Password must be at least 6 characters";
+                                    }
+                                    if (!/[A-Z]/.test(value)) {
+                                        return "Password must contain at least one uppercase letter";
+                                    }
+                                    if (!/[a-z]/.test(value)) return "Must contain at least one lowercase letter";
+                                    if (!/[0-9]/.test(value)) {
+                                        return "Password must contain at least one number";
+                                    }
+                                    return null;
                                 }}
                             >
                                 <Label>Password</Label>
                                 <Input placeholder="Enter your password" />
                                 <Description>
-                                Must be at least 8 characters with 1 uppercase and 1 number
+                                    Must be at least 6 characters with 1 uppercase, 1 lowercase, and 1 number
                                 </Description>
                                 <FieldError />
                             </TextField>
@@ -151,11 +138,28 @@ export default function Register() {
                             <Button
                                 color="primary"
                                 type="submit"
-                                // isLoading={loading}
                                 className="w-full h-14 text-lg font-black rounded-2xl shadow-xl shadow-blue-600/20 group"
                             >
                                 Create Account <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
+
+                            <div className="space-y-4 pt-2">
+                                <Button
+                                    type="button"
+                                    onClick={handleGoogleRegister}
+                                    variant="bordered"
+                                    className="w-full h-12 font-semibold rounded-2xl border-slate-200 hover:bg-slate-50 transition-colors gap-3"
+                                >
+                                    <Image
+                                        width={20}
+                                        height={20}
+                                        src="https://www.google.com/favicon.ico"
+                                        className="w-5 h-5"
+                                        alt="Google"
+                                    />
+                                    Sign Up with Google
+                                </Button>
+                            </div>
                         </Form>
 
                         <div className="text-center pt-2">
