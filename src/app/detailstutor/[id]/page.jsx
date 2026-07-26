@@ -26,7 +26,7 @@ const TutorDetailsPage = ({ params }) => {
 
   const handleBookedSessionButon = async () => {
     if (!user) {
-      alert("Please log in to book a session!");
+     toast.error("Please log in to book a session!");
       return;
     }
 
