@@ -7,7 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from "next/image";
 import NavLink from './NavLink';
-import { authClient, signOut } from '@/lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
@@ -25,9 +25,18 @@ const Navbar = () => {
   }, []);
 
   const handleLogOut = async () => {
-    await signOut();
-    router.push("/login");
-    router.refresh();
+    try {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/login");
+            router.refresh();
+          }
+        }
+      });
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
 
   return (
@@ -66,7 +75,7 @@ const Navbar = () => {
               About Us
             </NavLink>
 
-            {/* Protected Nav Links: Only rendered if logged in */}
+            {/* Protected Nav Links */}
             {user && (
               <>
                 <NavLink href="/add-tutors" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
@@ -86,7 +95,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="relative group">
-                <button className="flex items-center gap-3 p-1 rounded-full hover:bg-muted transition-colors border border-transparent hover:border-border">
+                <button className="flex items-center gap-3 p-1 rounded-full hover:bg-slate-100 transition-colors border border-transparent">
                   <Image
                     width={40}
                     height={40}
@@ -95,7 +104,7 @@ const Navbar = () => {
                     className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-600/10"
                   />
                   <div className="text-left hidden lg:block">
-                    <p className="text-sm font-bold truncate max-w-25">{user?.name}</p>
+                    <p className="text-sm font-bold truncate max-w-[100px]">{user?.name}</p>
                     <p className="text-[10px] text-slate-500">Student</p>
                   </div>
                 </button>
@@ -106,10 +115,10 @@ const Navbar = () => {
                     <p className="font-bold text-sm">Welcome back!</p>
                     <p className="text-xs truncate text-slate-500">{user?.email}</p>
                   </div>
-                  <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
+                  <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>
-                  <Link href="/settings" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
+                  <Link href="/settings" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
                     <User className="w-4 h-4" /> Settings
                   </Link>
                   <button 
@@ -135,7 +144,7 @@ const Navbar = () => {
 
           {/* Mobile Hamburger Button */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-lg hover:bg-muted transition-colors">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-lg hover:bg-slate-100 transition-colors">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -148,9 +157,8 @@ const Navbar = () => {
           <Link href="/" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/tutors" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>Tutors</Link>
           <Link href="/#featured" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>Featured</Link>
-          <Link href="/#why-choose-us" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+          <Link href="/#about-us" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>About Us</Link>
 
-          {/* Protected Links in Mobile View */}
           {user && (
             <>
               <Link href="/add-tutors" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl" onClick={() => setIsMenuOpen(false)}>Add Tutors</Link>
@@ -159,10 +167,10 @@ const Navbar = () => {
             </>
           )}
 
-          <div className="pt-4 border-t border-border mt-4">
+          <div className="pt-4 border-t border-slate-200 mt-4">
             {user ? (
               <div className="flex flex-col gap-2">
-                <p className="px-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">Account</p>
+                <p className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Account</p>
                 <button 
                   onClick={handleLogOut} 
                   className="block w-full text-left px-4 py-3 text-base font-medium text-red-500 hover:bg-red-50 rounded-xl"

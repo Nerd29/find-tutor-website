@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import { BookingDelete } from '../components/BookingDelete';
 import TutorDelete from '../components/TutorDelete';
+import TutorUpdate from '../components/TutorUpdate';
 
 const MyTutorsPage = async () => {
      const res=await fetch('http://localhost:8000/add-tutor',{
@@ -32,6 +33,7 @@ const MyTutorsPage = async () => {
                                             <th className="py-4 px-6">Teaching Mode</th>
                                             <th className="py-4 px-6">Location</th>
                                             <th className="py-4 px-6">Delete</th>
+                                            <th className="py-4 px-6">Update</th>
                                            
                                         </tr>
                                     </thead>
@@ -73,6 +75,9 @@ const MyTutorsPage = async () => {
                                                    <TutorDelete
 
                                                     tutorId={Tutor._id} ></TutorDelete>
+                                                </td>
+                                                <td className="py-4 px-6 font-bold text-black">
+                                                   <TutorUpdate tutor={Tutor}></TutorUpdate>
                                                 </td>
                                                 
                                             </tr>
