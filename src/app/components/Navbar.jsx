@@ -9,6 +9,7 @@ import Image from "next/image";
 import NavLink from './NavLink';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
@@ -179,7 +180,10 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-4">
+                
+          {/* DARK MODE TOGGLE */}
+          <ThemeToggle />
                 <Link href="/login">
                   <Button variant="bordered" className="rounded-xl w-full">Login</Button>
                 </Link>

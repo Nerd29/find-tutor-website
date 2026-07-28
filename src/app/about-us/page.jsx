@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lightbulb, Send, Compass, Award } from "lucide-react";
 import StatsSection from "../components/Stats/StatsSection";
+import Link from "next/link";
 // import StatsSection from "./StatsSection";
 
 const containerVariants = {
@@ -173,15 +174,17 @@ export default function WhyChooseUs() {
                 })}
               </div>
 
+             <Link href={"/#featuresSection"}>
               <motion.div variants={itemFadeUp} className="pt-4">
                 <motion.button 
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
                   className="px-6 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-teal-400 to-indigo-500 shadow-md hover:shadow-xl transition-all"
                 >
-                  Discover New Courses
+                  Discover our features
                 </motion.button>
               </motion.div>
+             </Link>
             </div>
 
             {/* Right Column Images */}
