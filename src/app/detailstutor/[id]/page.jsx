@@ -1,81 +1,46 @@
-"use client"; // 👈 1. MUST BE UNCOMMENTED
+import BookSessionButton from "@/app/components/BookSessionButton";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import Image from "next/image";
+// import BookSessionButton from "@/components/BookSessionButton";
 
-import { authClient } from '@/lib/auth-client';
-import { Button } from '@heroui/react';
-import Image from 'next/image';
-import React from 'react';
-import { useRouter } from 'next/navigation'; // 👈 Import useRouter
-// import Link from 'next/link';
-import toast from 'react-hot-toast';
+const TutorDetailsPage = async ({ params }) => {
+  const { id } = await params;
 
-const TutorDetailsPage = ({ params }) => {
-  const router = useRouter();
-  const { data: session } = authClient.useSession();
-  const user = session?.user;
+  // 1. YOUR TOKEN CODE (Runs securely on the server)
+  const token = await auth.api.getToken({
+    headers: await headers(),
+  });
 
-  // React React.use() to unwrap params in Next.js 15+
-  const { id } = React.use(params);
+ const jwt = token?.token;
 
-  const [tutor, setTutor] = React.useState(null);
+  console.log("Token:", token);
 
-  React.useEffect(() => {
-    fetch(`http://localhost:8000/tutors/${id}`)
-      .then((res) => res.json())
-      .then((data) => setTutor(data));
-  }, [id]);
+  // 2. Fetch tutor using token header
+  const res = await fetch(`http://localhost:8000/tutors/${id}`, {
+    headers: {
+      authorization: jwt? `Bearer ${jwt}`:"" 
+    },
+    cache: "no-store",
+  });
 
-  const handleBookedSessionButon = async () => {
-    if (!user) {
-     toast.error("Please log in to book a session!");
-      return;
-    }
-
-    const bookingData = {
-      userId: user.id,
-      userName: user.name,
-      userEmail: user.email,
-      tutorId: tutor?._id,
-      tutorName: tutor?.name,
-      price: tutor?.hourlyFee,
-      tutorImage: tutor?.image,
-      subject: tutor?.subject,
-      institution: tutor?.institution,
-      timeSlot: tutor?.timeSlot,
-    };
-
-    console.log("Booking Data:", bookingData);
-    const res= await fetch('http://localhost:8000/booking',{
-      method:"POST",
-      headers:{
-        'content-type':'application/json'
-      },
-      body: JSON.stringify(res)
-
-    })
-    const data= await res.json()
-    console.log(data)
-    toast.success(`You successfully booked a session with ${tutor?.name}`)
-
-    
-  }
-
-
-
-  
+  const tutor = await res.json();
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center p-6 bg-gray-50/50">
       <div className="grid grid-cols-1 md:grid-cols-2 bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden max-w-4xl w-full">
         {/* Left Side: Image */}
-        <div className="relative min-h-[450px] w-full">
-          <Image
-            src={tutor?.image}
-            alt={tutor?.name}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-            priority
-          />
+        <div className="relative min-h-[450px] w-full bg-gray-100">
+          {tutor?.image && (
+            <Image
+              src={tutor.image}
+              alt={tutor?.name || "Tutor"}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              priority
+            />
+          )}
         </div>
 
         {/* Right Side: Tutor Details */}
@@ -99,13 +64,9 @@ const TutorDetailsPage = ({ params }) => {
             </div>
           </div>
 
-          {/* Action Button */}
+          {/* Pass tutor data to interactive client button */}
           <div className="pt-4">
-            
-              <Button onClick={handleBookedSessionButon} color="primary" className="font-medium px-6 py-2.5 rounded-xl">
-                Book Session
-              </Button>
-          
+            <BookSessionButton tutor={tutor} />
           </div>
         </div>
       </div>

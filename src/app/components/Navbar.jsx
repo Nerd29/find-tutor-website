@@ -69,10 +69,10 @@ const Navbar = () => {
             </NavLink>
             
             {/* Scroll Section Links */}
-            <NavLink href="/#featured" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
+            <NavLink href="/featured" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
               Featured
             </NavLink>
-            <NavLink href="/#about-us" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
+            <NavLink href="/about-us" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
               About Us
             </NavLink>
 
@@ -116,12 +116,12 @@ const Navbar = () => {
                     <p className="font-bold text-sm">Welcome back!</p>
                     <p className="text-xs truncate text-slate-500">{user?.email}</p>
                   </div>
-                  <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
+                  {/* <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>
                   <Link href="/settings" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
                     <User className="w-4 h-4" /> Settings
-                  </Link>
+                  </Link> */}
                   <button 
                     type="button"
                     onClick={handleLogOut} 
@@ -183,7 +183,7 @@ const Navbar = () => {
               <div className="grid grid-cols-3 gap-4">
                 
           {/* DARK MODE TOGGLE */}
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
                 <Link href="/login">
                   <Button variant="bordered" className="rounded-xl w-full">Login</Button>
                 </Link>
