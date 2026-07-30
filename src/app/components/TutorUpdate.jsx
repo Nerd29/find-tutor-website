@@ -85,7 +85,7 @@ const TutorUpdate = ({ tutor }) => {
                           name="name"
                           type="text"
                           required
-                          defaultValue={tutor.name || ""}
+                          defaultValue={tutor.name}
                           className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none"
                         />
                       </div>

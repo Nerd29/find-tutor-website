@@ -9,7 +9,8 @@ import Image from "next/image";
 import NavLink from './NavLink';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
-import ThemeToggle from './ThemeToggle';
+import { ModeToggle } from './ModeToggle';
+
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
@@ -41,9 +42,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? "bg-white/70 backdrop-blur-md shadow-sm py-2" : "bg-slate-50 py-4"
-    }`}>
+    <nav
+  className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+    scrolled
+      ? "bg-white/70 dark:bg-slate-900/80 backdrop-blur-md shadow-sm py-2"
+      : "bg-slate-50 dark:bg-slate-950 py-4"
+  }`}
+>
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           
@@ -53,7 +58,7 @@ const Navbar = () => {
               <div className="p-2 bg-blue-600 rounded-xl group-hover:rotate-12 transition-transform">
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
-              <span className="font-extrabold text-2xl tracking-tight text-slate-900">
+             <span className="font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white">
                 MediQueue
               </span>
             </Link>
@@ -69,10 +74,10 @@ const Navbar = () => {
             </NavLink>
             
             {/* Scroll Section Links */}
-            <NavLink href="/featured" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
+            <NavLink href="/#featured" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
               Featured
             </NavLink>
-            <NavLink href="/about-us" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
+            <NavLink href="/#about-us" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
               About Us
             </NavLink>
 
@@ -91,9 +96,12 @@ const Navbar = () => {
               </>
             )}
           </div>
+         
 
           {/* Desktop Auth Section */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+                {/* Theme Toggle */}
+                <ModeToggle />
             {user ? (
               <div className="relative group">
                 <button className="flex items-center gap-3 p-1 rounded-full hover:bg-slate-100 transition-colors border border-transparent">
@@ -169,6 +177,11 @@ const Navbar = () => {
           )}
 
           <div className="pt-4 border-t border-slate-200 mt-4">
+
+            <div className="px-4 py-2 flex items-center justify-between">
+        <span className="text-sm font-medium text-slate-700">Theme</span>
+        <ModeToggle />
+      </div>
             {user ? (
               <div className="flex flex-col gap-2">
                 <p className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Account</p>

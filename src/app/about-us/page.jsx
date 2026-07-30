@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Lightbulb, Send, Compass, Award } from "lucide-react";
 import StatsSection from "../components/Stats/StatsSection";
 import Link from "next/link";
-// import StatsSection from "./StatsSection";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -84,7 +83,7 @@ export default function WhyChooseUs() {
   const currentContent = tabContents[activeTab];
 
   return (
-    <div className="bg-white text-gray-800 font-sans overflow-hidden py-12 space-y-24">
+    <div className="bg-white dark:bg-slate-950 text-gray-800 dark:text-slate-200 font-sans overflow-hidden py-12 space-y-24">
       {/* SECTION 1: Tabs & Showcase */}
       <motion.section 
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -94,10 +93,10 @@ export default function WhyChooseUs() {
         variants={containerVariants}
       >
         <motion.div variants={itemFadeUp} className="text-center space-y-2 mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-blue-600">
             Know why we are best
           </h2>
-          <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
+          <p className="text-xs uppercase tracking-widest text-gray-400 dark:text-slate-500 font-semibold">
             Learning via app never gets easier
           </p>
         </motion.div>
@@ -114,12 +113,12 @@ export default function WhyChooseUs() {
                   className="flex flex-col items-center cursor-pointer group"
                 >
                   <span className={`text-xs sm:text-sm font-semibold mb-3 transition-colors ${
-                    isActive ? "text-emerald-500" : "text-gray-400 group-hover:text-gray-600"
+                    isActive ? "text-emerald-500" : "text-gray-400 dark:text-slate-500 group-hover:text-gray-600 dark:group-hover:text-slate-300"
                   }`}>
                     {tab.subtitle}
                   </span>
-                  <div className={`w-6 h-6 rounded-full border-2 bg-white flex items-center justify-center transition-all ${
-                    isActive ? "border-emerald-500 scale-110" : "border-gray-300"
+                  <div className={`w-6 h-6 rounded-full border-2 bg-white dark:bg-slate-900 flex items-center justify-center transition-all ${
+                    isActive ? "border-emerald-500 scale-110" : "border-gray-300 dark:border-slate-600"
                   }`}>
                     {isActive && (
                       <motion.div 
@@ -133,7 +132,7 @@ export default function WhyChooseUs() {
             })}
           </div>
 
-          <div className="absolute bottom-3 left-0 right-0 h-[2px] bg-gray-200 z-0" />
+          <div className="absolute bottom-3 left-0 right-0 h-[2px] bg-gray-200 dark:bg-slate-700 z-0" />
         </motion.div>
 
         {/* Tab Content Box */}
@@ -148,13 +147,13 @@ export default function WhyChooseUs() {
           >
             {/* Left Column */}
             <div className="lg:col-span-6 space-y-6">
-              <motion.h3 variants={itemFadeUp} className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+              <motion.h3 variants={itemFadeUp} className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white leading-tight">
                 {currentContent.title}
               </motion.h3>
               
               <motion.div variants={itemFadeUp} className="w-12 h-1 bg-emerald-400 rounded-full" />
 
-              <motion.p variants={itemFadeUp} className="text-gray-500 text-sm leading-relaxed">
+              <motion.p variants={itemFadeUp} className="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">
                 {currentContent.description}
               </motion.p>
 
@@ -163,10 +162,10 @@ export default function WhyChooseUs() {
                   const Icon = feat.icon;
                   return (
                     <motion.div key={i} variants={itemFadeRight} className="flex items-center gap-3">
-                      <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-500">
+                      <div className="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-500">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-slate-300">
                         {feat.text}
                       </span>
                     </motion.div>
@@ -203,7 +202,7 @@ export default function WhyChooseUs() {
               <motion.div 
                 variants={itemFadeUp}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="relative w-48 sm:w-56 h-72 sm:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white z-10 -mr-6 transition-all"
+                className="relative w-48 sm:w-56 h-72 sm:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-slate-700 z-10 -mr-6 transition-all"
               >
                 <Image src={currentContent.image1} alt="Student learning" fill className="object-cover" />
               </motion.div>
@@ -211,7 +210,7 @@ export default function WhyChooseUs() {
               <motion.div 
                 variants={itemFadeUp}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="relative w-48 sm:w-56 h-72 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20 mt-12 transition-all"
+                className="relative w-48 sm:w-56 h-72 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-700 z-20 mt-12 transition-all"
               >
                 <Image src={currentContent.image2} alt="Student with headphones" fill className="object-cover" />
               </motion.div>

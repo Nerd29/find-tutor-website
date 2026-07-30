@@ -27,11 +27,14 @@ export default function BookSessionButton({ tutor }) {
       timeSlot: tutor?.timeSlot,
     };
 
+    const {data:tokenData}=await authClient.token()
+
     try {
       const res = await fetch("http://localhost:8000/booking", {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          authorization:`Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(bookingData),
       });

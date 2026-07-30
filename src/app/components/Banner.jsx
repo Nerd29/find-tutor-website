@@ -119,7 +119,7 @@ const Banner = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 bg-gradient-to-br from-blue-50 via-slate-50 to-white">
+    <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 bg-gradient-to-br from-blue-50 via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
@@ -131,39 +131,40 @@ const Banner = () => {
             }`}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 rounded-full border border-blue-600/20 text-blue-600 font-bold text-sm animate-[fadeInUp_0.6s_ease-out]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 dark:bg-blue-500/20 rounded-full border border-blue-600/20 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 font-bold text-sm animate-[fadeInUp_0.6s_ease-out]">
               <StarIcon />
               <span>{slide.badge}</span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1] animate-[fadeInLeft_0.7s_ease-out]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-[fadeInLeft_0.7s_ease-out]">
               {slide.title}
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-xl animate-[fadeInLeft_0.9s_ease-out]">
+            <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl animate-[fadeInLeft_0.9s_ease-out]">
               {slide.description}
             </p>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2 animate-[fadeInUp_1.1s_ease-out]">
+              {/* Primary Button - always blue */}
               <Button
                 onPress={() => handleNavigation(slide.primaryBtn.href)}
-                color="primary"
                 size="lg"
-                className="h-14 px-8 text-lg font-bold rounded-full shadow-xl shadow-blue-600/25 group cursor-pointer"
+                className="h-14 px-8 text-lg font-bold rounded-full shadow-xl shadow-blue-600/25 group cursor-pointer bg-blue-600 text-white hover:bg-blue-700"
               >
                 <slide.primaryBtn.icon className="w-5 h-5 mr-2" />
                 {slide.primaryBtn.text}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
 
+              {/* Secondary Button */}
               <Button
                 onPress={() => handleNavigation(slide.secondaryBtn.href)}
                 variant="bordered"
                 size="lg"
-                className="h-14 px-8 text-lg font-bold rounded-full group border-2 cursor-pointer"
+                className="h-14 px-8 text-lg font-bold rounded-full group border-2 cursor-pointer border-slate-300 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 <slide.secondaryBtn.icon className="w-5 h-5 mr-2" />
                 {slide.secondaryBtn.text}
@@ -180,7 +181,7 @@ const Banner = () => {
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-[2.5rem] blur opacity-20 group-hover:opacity-35 transition duration-700"></div>
 
-            <div className="relative bg-white p-2 rounded-[2.5rem] shadow-2xl overflow-hidden aspect-[4/3] lg:aspect-square">
+            <div className="relative bg-white dark:bg-slate-800 p-2 rounded-[2.5rem] shadow-2xl overflow-hidden aspect-[4/3] lg:aspect-square">
               <Image
                 src={slide.image}
                 alt="Tutor learning"
@@ -190,7 +191,7 @@ const Banner = () => {
               />
 
               {/* Floating card */}
-              <div className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-white/40 shadow-xl animate-[fadeInUp_1.2s_ease-out]">
+              <div className="absolute bottom-6 left-6 right-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-5 rounded-2xl border border-white/40 dark:border-slate-700 shadow-xl animate-[fadeInUp_1.2s_ease-out]">
                 <div className="flex items-center gap-4">
                   <div className="flex -space-x-3">
                     {[11, 12, 13, 14].map((i) => (
@@ -199,14 +200,14 @@ const Banner = () => {
                         src={`https://i.pravatar.cc/100?img=${i}`}
                         width={40}
                         height={40}
-                        className="w-10 h-10 rounded-full border-2 border-white shadow"
+                        className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-700 shadow"
                         alt="student"
                       />
                     ))}
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-slate-800">{slide.overlayText}</p>
-                    <p className="text-xs text-slate-500">{slide.overlaySub}</p>
+                    <p className="font-bold text-sm text-slate-800 dark:text-white">{slide.overlayText}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{slide.overlaySub}</p>
                   </div>
                 </div>
               </div>
@@ -223,7 +224,7 @@ const Banner = () => {
               className={`h-2.5 rounded-full transition-all duration-300 ${
                 index === current
                   ? "w-10 bg-blue-600"
-                  : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                  : "w-2.5 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -268,7 +269,7 @@ const Banner = () => {
 };
 
 const StarIcon = () => (
-  <svg className="w-4 h-4 fill-blue-600" viewBox="0 0 20 20">
+  <svg className="w-4 h-4 fill-blue-600 dark:fill-blue-400" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 );

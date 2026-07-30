@@ -40,13 +40,13 @@ export default function AddTutorPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-8">
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl space-y-8">
                 <div className="text-center space-y-2">
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tight">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                         Add <span className="text-blue-600">New Tutor</span>
                     </h1>
-                    <p className="text-slate-500 font-medium">
+                    <p className="text-slate-500 dark:text-slate-400 font-medium">
                         Fill in the details below to register a tutor listing.
                     </p>
                 </div>
@@ -55,7 +55,7 @@ export default function AddTutorPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {/* Tutor Name */}
                         <div className="space-y-2">
-                            <label htmlFor="name" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="name" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Tutor Name
                             </label>
                             <input
@@ -64,13 +64,13 @@ export default function AddTutorPage() {
                                 type="text"
                                 required
                                 placeholder="e.g. John Doe"
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Photo URL */}
                         <div className="space-y-2">
-                            <label htmlFor="image" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="image" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Photo (ImgBB / PostImage link)
                             </label>
                             <input
@@ -79,13 +79,13 @@ export default function AddTutorPage() {
                                 type="url"
                                 required
                                 placeholder="https://i.ibb.co/..."
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Subject / Category Dropdown */}
                         <div className="space-y-2">
-                            <label htmlFor="subject" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="subject" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Subject / Category
                             </label>
                             <select
@@ -93,7 +93,7 @@ export default function AddTutorPage() {
                                 name="subject"
                                 required
                                 defaultValue=""
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none bg-white transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             >
                                 <option value="" disabled>Select Subject</option>
                                 <option value="Mathematics">Mathematics</option>
@@ -107,7 +107,7 @@ export default function AddTutorPage() {
 
                         {/* Available Days and Time Slot */}
                         <div className="space-y-2">
-                            <label htmlFor="availability" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="availability" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Available Days & Time Slot
                             </label>
                             <input
@@ -116,13 +116,13 @@ export default function AddTutorPage() {
                                 type="text"
                                 required
                                 placeholder="Sun - Thu 5:00 PM - 8:00 PM"
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Hourly Fee */}
                         <div className="space-y-2">
-                            <label htmlFor="hourlyFee" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="hourlyFee" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Hourly Fee ($ or ৳)
                             </label>
                             <input
@@ -132,13 +132,13 @@ export default function AddTutorPage() {
                                 min="0"
                                 required
                                 placeholder="e.g. 25"
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Total Slot */}
                         <div className="space-y-2">
-                            <label htmlFor="totalSlot" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="totalSlot" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Total Slot
                             </label>
                             <input
@@ -148,13 +148,13 @@ export default function AddTutorPage() {
                                 min="1"
                                 required
                                 placeholder="e.g. 5"
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Session Start Date */}
                         <div className="space-y-2">
-                            <label htmlFor="sessionStartDate" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="sessionStartDate" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Session Start Date
                             </label>
                             <input
@@ -162,13 +162,13 @@ export default function AddTutorPage() {
                                 name="sessionStartDate"
                                 type="date"
                                 required
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             />
                         </div>
 
                         {/* Teaching Mode Dropdown */}
                         <div className="space-y-2">
-                            <label htmlFor="teachingMode" className="text-sm font-bold text-slate-700 ml-1">
+                            <label htmlFor="teachingMode" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                                 Teaching Mode
                             </label>
                             <select
@@ -176,7 +176,7 @@ export default function AddTutorPage() {
                                 name="teachingMode"
                                 required
                                 defaultValue="Online"
-                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none bg-white transition-all duration-200"
+                                className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                             >
                                 <option value="Online">Online</option>
                                 <option value="Offline">Offline</option>
@@ -187,7 +187,7 @@ export default function AddTutorPage() {
 
                     {/* Institution & Experience */}
                     <div className="space-y-2">
-                        <label htmlFor="institutionAndExperience" className="text-sm font-bold text-slate-700 ml-1">
+                        <label htmlFor="institutionAndExperience" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                             Institution & Experience
                         </label>
                         <input
@@ -196,13 +196,13 @@ export default function AddTutorPage() {
                             type="text"
                             required
                             placeholder="e.g. CUET (3 years of teaching experience)"
-                            className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                            className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                         />
                     </div>
 
                     {/* Location */}
                     <div className="space-y-2">
-                        <label htmlFor="location" className="text-sm font-bold text-slate-700 ml-1">
+                        <label htmlFor="location" className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                             Location (Area / City)
                         </label>
                         <input
@@ -211,7 +211,7 @@ export default function AddTutorPage() {
                             type="text"
                             required
                             placeholder="e.g. Chittagong, Bangladesh"
-                            className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 focus:border-blue-600 outline-none transition-all duration-200"
+                            className="w-full h-12 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-blue-600 outline-none transition-all duration-200"
                         />
                     </div>
 

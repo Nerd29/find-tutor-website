@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Monitor, GraduationCap, ClipboardList, Apple } from "lucide-react";
 import CountUpNumber from "./CountStats";
-// import CountUpNumber from "";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,7 +31,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="relative bg-slate-50/60 py-16">
+    <section className="relative bg-slate-50/60 dark:bg-slate-900/50 py-16">
 
         <h1 className="text-center mb-4 text-3xl font-bold text-blue-500">Our Success Numbers</h1>
       <div className="absolute left-0 bottom-0 translate-y-1/3 -translate-x-1/3 w-64 h-64 bg-indigo-500 rounded-full blur-3xl opacity-20 pointer-events-none" />
@@ -53,21 +52,21 @@ export default function StatsSection() {
                 variants={cardPop}
                 whileHover={{ y: -10, scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative p-8 rounded-2xl flex flex-col items-center text-center bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:bg-indigo-600 hover:border-indigo-600 hover:shadow-2xl cursor-pointer"
+                className="group relative p-8 rounded-2xl flex flex-col items-center text-center bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-700 shadow-sm transition-all duration-300 hover:bg-indigo-600 hover:border-indigo-600 hover:shadow-2xl cursor-pointer"
               >
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-500 bg-indigo-50 px-2.5 py-1 rounded-full mb-4 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-900/40 dark:text-indigo-300 px-2.5 py-1 rounded-full mb-4 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                   {stat.category}
                 </span>
 
-                <div className="p-3.5 rounded-xl mb-4 bg-indigo-50 text-indigo-500 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
+                <div className="p-3.5 rounded-xl mb-4 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-500 dark:text-indigo-300 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                   <Icon className="w-8 h-8" />
                 </div>
 
-                <span className="text-3xl font-extrabold tracking-tight mb-1 text-gray-900 transition-colors duration-300 group-hover:text-white">
+                <span className="text-3xl font-extrabold tracking-tight mb-1 text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-white">
                   <CountUpNumber end={stat.value} suffix="+" />
                 </span>
 
-                <span className="text-xs font-bold tracking-wider uppercase text-gray-400 transition-colors duration-300 group-hover:text-indigo-100">
+                <span className="text-xs font-bold tracking-wider uppercase text-gray-400 dark:text-slate-500 transition-colors duration-300 group-hover:text-indigo-100">
                   {stat.label}
                 </span>
               </motion.div>
