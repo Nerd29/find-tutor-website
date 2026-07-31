@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
-import Providers from "./components/Providers";
 import { ThemeProvider } from "./components/theme-provider";
 
 const geistSans = Geist({
@@ -23,23 +22,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-   <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} font-sans scroll-smooth h-full antialiased`}>
-     <body className="min-h-full flex flex-col bg-white text-gray-900 dark:bg-slate-950 dark:text-slate-50 transition-colors">
-        {/* <Providers> */}
-           <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-            >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} font-sans scroll-smooth h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col bg-white text-gray-900 dark:bg-slate-950 dark:text-slate-50 transition-colors">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
-
-            {children}
-        <Footer />
-           <Toaster />
-            </ThemeProvider>
-        {/* </Providers> */}
-        
+          {children}
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

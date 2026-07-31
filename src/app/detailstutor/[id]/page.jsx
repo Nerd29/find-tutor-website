@@ -11,6 +11,7 @@ const TutorDetailsPage = async ({ params }) => {
   });
 
   const jwt = token?.token;
+  console.log(jwt)
 
   const res = await fetch(`http://localhost:8000/tutors/${id}`, {
     headers: {
@@ -18,8 +19,13 @@ const TutorDetailsPage = async ({ params }) => {
     },
     cache: "no-store",
   });
+  // if (!res.ok) {
+  //   const errorText = await res.text();
+  //   console.error(`Backend returned status ${res.status}:`, errorText);
+  // }
 
   const tutor = await res.json();
+  console.log(tutor)
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center p-6 bg-gray-50/50 dark:bg-slate-950">
@@ -52,10 +58,12 @@ const TutorDetailsPage = async ({ params }) => {
               <p><span className="font-semibold text-gray-900 dark:text-white">Availability :</span> {tutor?.availableDays}</p>
               <p><span className="font-semibold text-gray-900 dark:text-white">Timeslot :</span> {tutor?.timeSlot}</p>
               <p><span className="font-semibold text-gray-900 dark:text-white">Hourly Fee :</span> ${tutor?.hourlyFee}</p>
-              <p><span className="font-semibold text-gray-900 dark:text-white">Remaining Slots :</span> {tutor?.remainingSlots}</p>
+              <p className="font-semibold text-gray-900 dark:text-white">Remaining Slots : <span className="text-blue-500">{tutor?.remainingSlots}</span> </p>
               <p><span className="font-semibold text-gray-900 dark:text-white">Session Start Date :</span> {tutor?.sessionStartDate}</p>
             </div>
           </div>
+
+          
 
           <div className="pt-4">
             <BookSessionButton tutor={tutor} />

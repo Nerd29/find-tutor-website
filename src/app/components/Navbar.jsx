@@ -104,7 +104,8 @@ const Navbar = () => {
                 <ModeToggle />
             {user ? (
               <div className="relative group">
-                <button className="flex items-center gap-3 p-1 rounded-full hover:bg-slate-100 transition-colors border border-transparent">
+                <button className="flex items-center gap-3 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent">
+      
                   <Image
                     width={40}
                     height={40}
@@ -119,11 +120,11 @@ const Navbar = () => {
                 </button>
 
                 {/* Dropdown Menu */}
-                <div className="absolute right-0 top-12 w-56 bg-white border border-slate-200 rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="px-4 py-3 border-b border-slate-100">
-                    <p className="font-bold text-sm">Welcome back!</p>
-                    <p className="text-xs truncate text-slate-500">{user?.email}</p>
-                  </div>
+               <div className="absolute right-0 top-12 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-700">
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">Welcome back!</p>
+                  <p className="text-xs truncate text-slate-500 dark:text-slate-400">{user?.email}</p>
+                </div>
                   {/* <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3 transition-colors">
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>

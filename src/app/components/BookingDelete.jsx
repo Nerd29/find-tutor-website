@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import toast from "react-hot-toast";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -7,12 +8,16 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 export function BookingDelete({bookingId}) {
 
     const handleDeleteButton= async()=>{
+
+      const session = await authClient.getSession();
+      const token = session?.data?.token;
         const res= await fetch(`http://localhost:8000/booking/${bookingId}`,{
             method:"DELETE",
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        Authorization: token ? `Bearer ${token}` : "",
       },
-    //   body: JSON.stringify(bookingData)
+      // body: JSON.stringify(bookingData)
 
     })
     const data= await res.json()

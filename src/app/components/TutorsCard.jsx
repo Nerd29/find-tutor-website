@@ -2,10 +2,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@heroui/react';
+import { FaStar } from "react-icons/fa";
 import { Plus } from '@gravity-ui/icons';
 import Link from 'next/link';
 
 const TutorsCard = ({ tutor }) => {
+
+  
   return (
     <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col group">
       
@@ -40,12 +43,14 @@ const TutorsCard = ({ tutor }) => {
           </p>
 
           <div className="my-3 inline-block bg-amber-400/20 text-amber-800 dark:text-amber-300 text-[11px] font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-md">
-            ★ {tutor.subject}
+            <span className='flex gap-1 justify-center items-center'><FaStar /> {tutor.subject}</span>
           </div>
 
           <p className="text-xs font-medium text-slate-600 dark:text-slate-400">
             {tutor.experience} Experience
           </p>
+          <p className="mt-4 text-xs font-medium text-blue-600 dark:text-slate-400">Session Start Date : {tutor.sessionStartDate}</p>
+          <p className="text-xs font-medium text-red-600 dark:text-slate-400">Session Start Date : {tutor.sessionEndDate}</p>
         </div>
         <Link className="mt-4" href={`/detailstutor/${tutor._id}`}>
           <Button className="bg-blue-500 text-white">

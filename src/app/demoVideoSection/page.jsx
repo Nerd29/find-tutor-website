@@ -129,7 +129,7 @@ export default function DemoVideoSection() {
             <div className="relative pt-[56.25%] w-full">
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
+               src="https://www.youtube-nocookie.com/embed/lG4VkPoG3ko"
                 title="How It Works Demo Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
