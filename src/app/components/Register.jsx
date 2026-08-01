@@ -7,12 +7,15 @@ import { authClient } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Register() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
@@ -26,20 +29,24 @@ export default function Register() {
 
     if (error) {
       toast.error(error.message || "Registration failed!");
+      setLoading(false);
       return;
     }
 
     if (res) {
       toast.success("Registration Successful!");
       router.push("/login");
+      setLoading(false);
     }
   };
 
   const handleGoogleRegister = async () => {
+    setLoading(true);
     await authClient.signIn.social({
       provider: "google",
       callbackURL: "/",
     });
+    
   };
 
   return (
@@ -155,6 +162,7 @@ export default function Register() {
               {/* Create Account Button - always blue */}
               <Button
                 type="submit"
+                isLoading={loading}
                 className="w-full h-14 text-lg font-black rounded-2xl shadow-xl shadow-blue-600/20 group bg-blue-600 text-white hover:bg-blue-700"
               >
                 Create Account{" "}

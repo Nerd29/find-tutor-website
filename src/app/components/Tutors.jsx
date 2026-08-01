@@ -7,30 +7,45 @@ import Link from 'next/link';
 const TutorsPage = ({params}) => {
 
    
-
+    const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [tutors, setTutors] = useState([]);
+
     const fetchTutors = async () => {
+        try {
+            setLoading(true);
         const params = new URLSearchParams();
 
-  if (search) params.append("search", search);
-  if (startDate) params.append("startDate", startDate);
-  if (endDate) params.append("endDate", endDate);
+    if (search) params.append("search", search);
+    if (startDate) params.append("startDate", startDate);
+    if (endDate) params.append("endDate", endDate);
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`);
   
 
-  const data = await res.json();
-  setTutors(data);
-};
-   useEffect(() => {
-  fetchTutors();
-}, []);
-    
+    const data = await res.json();
+    setTutors(data);
+    }
+    catch (error) {
+    console.error("Error fetching tutors:", error);
+    }
+    finally {
+    setLoading(false);
+    }
+}
+    useEffect(() => {
+        fetchTutors();
+    }, []);
+        if (loading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        );
+        }
+
     // console.log(tutors)
 
     return (

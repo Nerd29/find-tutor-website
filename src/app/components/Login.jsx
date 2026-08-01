@@ -6,13 +6,17 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
@@ -32,9 +36,14 @@ export default function Login() {
     } else {
       toast.error("Invalid Email and Password");
     }
+
+    setLoading(false);
+
   };
+  
 
   const handleGoogleSignIn = async () => {
+    setGoogleLoading(true);
     await authClient.signIn.social({
       provider: "google",
       callbackURL: "/",
@@ -61,6 +70,7 @@ export default function Login() {
             <div className="space-y-4">
               <Button
                 onClick={handleGoogleSignIn}
+                isLoading={googleLoading}
                 variant="bordered"
                 className="w-full h-12 font-semibold rounded-2xl border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors gap-3"
               >
@@ -152,6 +162,7 @@ export default function Login() {
 
               <Button
                 type="submit"
+                isLoading={loading}
                 className="w-full h-14 text-[16px] font-black rounded-2xl shadow-xl shadow-blue-600/20 group bg-blue-600 text-white hover:bg-blue-700"
               >
                 Log In{" "}
