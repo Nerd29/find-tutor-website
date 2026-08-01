@@ -16,7 +16,7 @@ const MyBookedSessionsPage = async () => {
     });
 
     const user = session?.user;
-    const res = await fetch(`http://localhost:8000/booking/${user?.id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking/${user?.id}`, {
         cache: "no-store"
     });
 

@@ -10,7 +10,7 @@ const TutorDelete = ({tutorId}) => {
     const handleDeleteButton= async()=>{
         console.log(tutorId)
      
-    const res = await fetch(`http://localhost:8000/add-tutor/${tutorId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-tutor/${tutorId}`, {
       method: 'DELETE',
     });
     const data= await res.json()

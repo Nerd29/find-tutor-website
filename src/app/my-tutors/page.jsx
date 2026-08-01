@@ -10,7 +10,7 @@ export const metadata = {
     description: "View and manage your tutors with MediQueue.",
 };
 const MyTutorsPage = async () => {
-    const res = await fetch('http://localhost:8000/add-tutor', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-tutor`, {
         cache: "no-store"
     })
     const tutors = await res.json()

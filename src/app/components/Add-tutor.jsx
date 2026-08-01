@@ -17,7 +17,7 @@ export default function AddTutorPage() {
            console.log(tutor)
         // setLoading(true);
 
-         const res = await fetch('http://localhost:8000/tutor', {
+         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutor`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

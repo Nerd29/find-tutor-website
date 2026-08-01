@@ -22,11 +22,16 @@ const TutorsPage = ({params}) => {
     if (startDate) params.append("startDate", startDate);
     if (endDate) params.append("endDate", endDate);
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`);
-  
+const res = await fetch(
+  `${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`
+);
 
-    const data = await res.json();
-    setTutors(data);
+if (!res.ok) {
+  throw new Error("Failed to fetch tutors");
+}
+
+const data = await res.json();
+setTutors(data);
     }
     catch (error) {
     console.error("Error fetching tutors:", error);

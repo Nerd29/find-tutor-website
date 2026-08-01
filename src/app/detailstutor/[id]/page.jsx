@@ -13,7 +13,7 @@ const TutorDetailsPage = async ({ params }) => {
   const jwt = token?.token;
   console.log(jwt)
 
-  const res = await fetch(`http://localhost:8000/tutors/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/${id}`, {
     headers: {
       authorization: jwt ? `Bearer ${jwt}` : "" 
     },

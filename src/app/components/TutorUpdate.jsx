@@ -27,7 +27,7 @@ const TutorUpdate = ({ tutor }) => {
 
     try {
       const res = await fetch(
-        `http://localhost:8000/add-tutor/${tutor._id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/add-tutor/${tutor._id}`,
         {
           method: "PATCH",
           headers: {
