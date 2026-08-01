@@ -1,6 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
+export const metadata = {
+  title: "Footer - MediQueue",
+  description: "Footer component for MediQueue website.",
+};
 
 const Footer = () => {
   return (

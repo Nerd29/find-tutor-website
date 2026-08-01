@@ -18,6 +18,7 @@ const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -66,21 +67,17 @@ const Navbar = () => {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex gap-8 items-center">
-            <NavLink href="/" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
-              Home
-            </NavLink>
-            <NavLink href="/tutors" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
-              Tutors
-            </NavLink>
-            
-            {/* Scroll Section Links */}
-            <NavLink href="/#featured" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
-              Featured
-            </NavLink>
-            <NavLink href="/#about-us" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">
-              About Us
-            </NavLink>
-
+         <NavLink href="/" onClick={() => { document.title = "Home - MediQueue"; }}>Home</NavLink>
+          <NavLink href="/tutors" onClick={() => { document.title = "Tutors - MediQueue"; }}>Tutors</NavLink>
+          <NavLink href="/about-us" onClick={() => { document.title = "About Us - MediQueue"; }}>About Us</NavLink>
+          <NavLink href="/featured" onClick={() => { document.title = "Featured - MediQueue"; }}>Featured</NavLink>
+        {/* <NavLink 
+          href="/contact-us" 
+          onClick={() => { document.title = "Contact Us - MediQueue"; }}
+          className="font-medium  transition-colors"
+        >
+          Contact Us
+        </NavLink> */}
             {/* Protected Nav Links */}
             {user && (
               <>

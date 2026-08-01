@@ -9,9 +9,10 @@ import Banner from "./components/Banner";
 // import FeaturesSection from "./components/FeaturesSection";
 import DemoVideoSection from "./demoVideoSection/page";
 import { ModeToggle } from "./components/ModeToggle";
-import WhyChooseUs from "./about-us/page";
+// import WhyChooseUs from "./about-us/page";
 import FeaturesSection from "./featuresSection/page";
 import Featured from "./featured/page";
+import WhyChooseUs from "./components/About";
 // import DemoVideoSection from "./components/DemoVideo";
 
 export default function Home() {

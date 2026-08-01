@@ -1,6 +1,10 @@
 import React from 'react';
 import FeaturedClient from '../components/FeaturedClient';
 // import FeaturedClient from './FeaturedClient';
+export const metadata = {
+  title: "Featured Tutors - MediQueue",
+  description: "Discover our top-rated tutors and find the perfect match for your learning needs.",
+};
 
 const Featured = async () => {
     let tutors = [];

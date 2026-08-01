@@ -5,7 +5,10 @@ import React from 'react';
 import { BookingDelete } from '../components/BookingDelete';
 import TutorDelete from '../components/TutorDelete';
 import TutorUpdate from '../components/TutorUpdate';
-
+export const metadata = {
+    title: "My Tutors - MediQueue",
+    description: "View and manage your tutors with MediQueue.",
+};
 const MyTutorsPage = async () => {
     const res = await fetch('http://localhost:8000/add-tutor', {
         cache: "no-store"

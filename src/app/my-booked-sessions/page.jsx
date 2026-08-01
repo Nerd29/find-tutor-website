@@ -5,6 +5,10 @@ import Image from 'next/image';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Button } from '@heroui/react';
 import { BookingDelete } from '../components/BookingDelete';
+export const metadata = {
+    title: "My Booked Sessions - MediQueue",
+    description: "View and manage your booked tutoring sessions with MediQueue.",
+};
 
 const MyBookedSessionsPage = async () => {
     const session = await auth.api.getSession({

@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "./components/theme-provider";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +16,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MediQueue",
+
+  title:{
+    default: "MediQueue - Find Your Perfect Tutor",
+    template: "%s | MediQueue - Find Your Perfect Tutor",
+    
+  } ,
   description: "Master new skills with expert-led courses",
+  
 };
 
 export default function RootLayout({ children }) {
@@ -35,8 +41,11 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar />
+          <main className="flex-grow">
+
           {children}
-          <Footer />
+          </main>
+          <Footer/>
           <Toaster />
         </ThemeProvider>
       </body>
