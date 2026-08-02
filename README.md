@@ -76,9 +76,12 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
 git clone https://github.com/Nerd29/find-tutor-website.git
 cd find-tutor-website
 npm install
-
-2.🚀 Run the Development Server
+```
+2.🚀 **Run the Development Server**
+```bash
     npm run start
+```
+---
     
 📂 Folder Structure
 find-tutor-website/
@@ -97,18 +100,29 @@ find-tutor-website/
 │
 └── 📄 README.md
 
-🤝 How to Contribute
-🍴 Fork the Project
-🌿 Create your Feature Branch (git checkout -b feature/AmazingFeature)
-💾 Commit your Changes (git commit -m 'Add some AmazingFeature')
-📤 Push to the Branch (git push origin feature/AmazingFeature)
-🔀 Open a Pull Request
+## 🤝 How to Contribute
+
+1. 🍴 **Fork the Project**
+2. 🌿 **Create your Feature Branch**
+```bash
+ (git checkout -b feature/AmazingFeature)
+```
+3.💾** Commit your Changes**
+```bash
+(git commit -m 'Add some AmazingFeature')
+```
+4.📤** Push to the Branch**
+```bash
+(git push origin feature/AmazingFeature)
+```
+5.🔀** Open a Pull Request**
 
 
 
-📬 Contact
-  📧 Email: majumderturja59@gmail.com
-  🐙 GitHub: @Nerd29
+## 📬 Contact
+
+- 📧 **Email:** majumderturja59@gmail.com  
+- 🐙 **GitHub:** [@Nerd29](https://github.com/Nerd29)
 
 
 
