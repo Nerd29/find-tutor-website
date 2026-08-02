@@ -59,7 +59,7 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
 
 ## 📦 Dependencies
 
-```json
+``json
 {
   "express": "^4.21.2",
   "mongodb": "^6.12.0",
@@ -68,7 +68,7 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
   "jose-cjs": "^4.32.0"
 }
 
-⚙️ Installation & Setup1. 
+##⚙️ Installation & Setup1. 
 1.📥 Clone the Repository
 git clone https://github.com/Nerd29/find-tutor-website.git
 cd find-tutor-website
