@@ -50,7 +50,7 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
 
 ## 💻 Tech Stack
 
-- **Frontend:** `React.js` · `Vite` · `Tailwind CSS` 🎨
+- **Frontend:** `Next.js` · `Vite` · `Tailwind CSS` 🎨
 - **Backend:** `Node.js` · `Express.js` · `MongoDB (Native Driver)` ⚙️
 - **Authentication:** `Google OAuth 2.0` · `JWT (jose-cjs)` 🔑
 - **Deployment & Tools:** `Vercel` · `Git` · `GitHub` · `VS Code` 🛠️
