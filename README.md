@@ -67,13 +67,15 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
   "dotenv": "^16.4.7",
   "jose-cjs": "^4.32.0"
 }
+```
 
-##⚙️ Installation & Setup1. 
-1.📥 Clone the Repository
+## ⚙️ Installation & Setup
+
+1. 📥 **Clone the Repository**
+```bash
 git clone https://github.com/Nerd29/find-tutor-website.git
 cd find-tutor-website
 npm install
-
 
 2.🚀 Run the Development Server
     npm run start
