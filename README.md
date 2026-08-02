@@ -71,13 +71,13 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
 
 ## ⚙️ Installation & Setup
 
-1. 📥 **Clone the Repository**
+1. 📥 Clone the Repository
 ```bash
 git clone https://github.com/Nerd29/find-tutor-website.git
 cd find-tutor-website
 npm install
 ```
-2.🚀 **Run the Development Server**
+2.🚀 Run the Development Server
 ```bash
     npm run start
 ```
@@ -102,20 +102,20 @@ find-tutor-website/
 
 ## 🤝 How to Contribute
 
-1. 🍴 **Fork the Project**
-2. 🌿 **Create your Feature Branch**
+1. 🍴 Fork the Project
+2. 🌿 Create your Feature Branch**
 ```bash
  (git checkout -b feature/AmazingFeature)
 ```
-3.💾** Commit your Changes**
+3.💾 Commit your Changes
 ```bash
 (git commit -m 'Add some AmazingFeature')
 ```
-4.📤** Push to the Branch**
+4.📤 Push to the Branch
 ```bash
 (git push origin feature/AmazingFeature)
 ```
-5.🔀** Open a Pull Request**
+5.🔀 Open a Pull Request
 
 
 
