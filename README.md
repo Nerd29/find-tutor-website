@@ -59,7 +59,7 @@ MediQueue allows students to browse verified educators, filter profiles dynamica
 
 ## 📦 Dependencies
 
-``json
+```json
 {
   "express": "^4.21.2",
   "mongodb": "^6.12.0",
