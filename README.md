@@ -1,45 +1,66 @@
-📚 MediQueue — Smart Tutor Booking Platform
+# 📚 MediQueue — Smart Tutor Booking Platform
 
-🎓 A modern, full-stack platform bridging the gap between students and expert educators with real-time session booking and dynamic slot management.
+> 🎓 *A modern, full-stack platform bridging the gap between students and expert educators with real-time session booking and dynamic slot management.*
 
-📌 Table of Contents
-📖 About the Project
-🎯 Project Overview
-✨ Key Features
-💻 Tech Stack
-📦 Dependencies
-⚙️ Installation & Setup
-📂 Folder Structure
-👥 Contributions
-🤝 How to Contribute
-📄 License
-📬 Contact
+---
 
-📖 About the Project
-MediQueue simplifies the process of finding and reserving academic tutors. Traditional listing services often suffer from double-booking and static data; MediQueue solves this by integrating atomic slot tracking, dual-collection database lookups, and date-range availability matching—all wrapped in a sleek, dark-themed UI.
+## 📌 Table of Contents
 
-🎯 Project Overview
+- 📖 [About the Project](#-about-the-project)
+- 🎯 [Project Overview](#-project-overview)
+- ✨ [Key Features](#-key-features)
+- 💻 [Tech Stack](#-tech-stack)
+- 📦 [Dependencies](#-dependencies)
+- ⚙️ [Installation & Setup](#️-installation--setup)
+- 📂 [Folder Structure](#-folder-structure)
+- 👥 [Contributions](#-contributions)
+- 🤝 [How to Contribute](#-how-to-contribute)
+- 📄 [License](#-license)
+- 📬 [Contact](#-contact)
+
+---
+
+## 📖 About the Project
+
+**MediQueue** simplifies the process of finding and reserving academic tutors. Traditional listing services often suffer from double-booking and static data; MediQueue solves this by integrating **atomic slot tracking**, **dual-collection database lookups**, and **date-range availability matching**—all wrapped in a sleek, dark-themed UI.
+
+---
+
+## 🎯 Project Overview
+
 MediQueue allows students to browse verified educators, filter profiles dynamically, manage personal bookings, and list new tutor offerings securely.
 
-🌟 Key Highlights
-⏱️ Real-Time Consistency: Automated inventory updates prevent overbooking.
-🔒 Secure Authentication: Integrated Google OAuth 2.0 and JWT verification via remote JWKS.
-🔄 Dynamic Data Merging: Dual-collection queries seamlessly fall back across static and user-generated tutor pools.
+### 🌟 Key Highlights
 
-✨ Key Features
-⚡ Atomic Slot Reservation: Uses MongoDB $inc operators (-1 on booking, +1 on cancellation) to manage session limits safely across concurrent requests.
-🔍 Multi-Criteria Filter Engine: Handles simultaneous case-insensitive name matching ($regex), date-range checking (sessionStartDate / sessionEndDate), and fee sorting (asc / desc).
-🗂️ Dual-Collection Unified Lookup: Dynamically searches primary tutor profiles (tutor-list) and secondary user-submitted profiles (add-tutor) in a single workflow.
-🛡️ JWKS & OAuth 2.0 Security: Protected routes enforce JWT validation powered by jose-cjs alongside Google Sign-In support.
-📊 Tutor Dashboard & Management: Authenticated users can post, update, and manage their own tutoring listings and student bookings.
+- ⏱️ **Real-Time Consistency:** Automated inventory updates prevent overbooking.
+- 🔒 **Secure Authentication:** Integrated Google OAuth 2.0 and JWT verification via remote JWKS.
+- 🔄 **Dynamic Data Merging:** Dual-collection queries seamlessly fall back across static and user-generated tutor pools.
 
-💻 Tech Stack
-Frontend: React.js · Vite · Tailwind CSS 🎨
-Backend: Node.js · Express.js · MongoDB (Native Driver) ⚙️
-Authentication: Google OAuth 2.0 · JWT (jose-cjs) 🔑
-Deployment & Tools: Vercel · Git · GitHub · VS Code 🛠️
+---
 
-📦 DependenciesJSON{
+## ✨ Key Features
+
+- ⚡ **Atomic Slot Reservation:** Uses MongoDB `$inc` operators (`-1` on booking, `+1` on cancellation) to manage session limits safely across concurrent requests.
+- 🔍 **Multi-Criteria Filter Engine:** Handles simultaneous case-insensitive name matching (`$regex`), date-range checking (`sessionStartDate` / `sessionEndDate`), and fee sorting (`asc` / `desc`).
+- 🗂️ **Dual-Collection Unified Lookup:** Dynamically searches primary tutor profiles (`tutor-list`) and secondary user-submitted profiles (`add-tutor`) in a single workflow.
+- 🛡️ **JWKS & OAuth 2.0 Security:** Protected routes enforce JWT validation powered by `jose-cjs` alongside Google Sign-In support.
+- 📊 **Tutor Dashboard & Management:** Authenticated users can post, update, and manage their own tutoring listings and student bookings.
+
+---
+
+## 💻 Tech Stack
+
+- **Frontend:** `React.js` · `Vite` · `Tailwind CSS` 🎨
+- **Backend:** `Node.js` · `Express.js` · `MongoDB (Native Driver)` ⚙️
+- **Authentication:** `Google OAuth 2.0` · `JWT (jose-cjs)` 🔑
+- **Deployment & Tools:** `Vercel` · `Git` · `GitHub` · `VS Code` 🛠️
+
+---
+
+## 📦 Dependencies
+
+```json
+{
   "express": "^4.21.2",
   "mongodb": "^6.12.0",
   "cors": "^2.8.5",
