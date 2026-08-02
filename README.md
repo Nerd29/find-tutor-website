@@ -83,7 +83,8 @@ npm install
 ```
 ---
     
-📂 Folder Structure
+📂## Folder Structure
+```bash
 find-tutor-website/
 │
 ├── 📁 client/
@@ -99,6 +100,7 @@ find-tutor-website/
 │   └── 📄 package.json
 │
 └── 📄 README.md
+```
 
 ## 🤝 How to Contribute
 
