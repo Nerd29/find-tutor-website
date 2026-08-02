@@ -53,12 +53,8 @@ git clone https://github.com/Nerd29/find-tutor-website.git
 cd find-tutor-website
 npm install
 
-2. 🔐 Configure Environment Variables
-  PORT=8000
-  MONGODB_URI=mongodb+srv://find-tutor:kohRYfeEcDaC7yTK@cluster0.qn5psde.mongodb.net/?appName=Cluster0
-  CLIENT_URL=https://find-tutor-website-khaki.vercel.app
 
-3.🚀 Run the Development Server
+2.🚀 Run the Development Server
     npm run start
     
 📂 Folder Structure
