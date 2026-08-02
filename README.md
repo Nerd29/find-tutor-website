@@ -83,7 +83,7 @@ npm install
 ```
 ---
     
-📂## Folder Structure
+##📂 Folder Structure
 ```bash
 find-tutor-website/
 │
